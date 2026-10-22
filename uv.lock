@@ -464,6 +464,24 @@ wheels = [
 ]
 
 [[package]]
+name = "dagster-cloud"
+version = "1.13.26"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "dagster" },
+    { name = "dagster-cloud-cli" },
+    { name = "dagster-shared" },
+    { name = "pex" },
+    { name = "questionary" },
+    { name = "requests" },
+    { name = "typer" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d4/6e/bdbcdab7b7b95390553d86680917e041a55ae8c100d261e9ee78c4f6a85d/dagster_cloud-1.13.26.tar.gz", hash = "sha256:226b1a02c98522f4e4ffb1d56a85d70313666d3e2ff630846f84b38e2471c800", size = 796296, upload-time = "2026-10-09T21:27:38.663Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c7/c9/c801bdb298fbb4b63f33fc7605783f0ed383511e5266261c753c76870f26/dagster_cloud-1.13.26-py3-none-any.whl", hash = "sha256:54bbadc381a1c8f84abcb53cc334a96330cdd036e77a5e0bb370315f8e49e016", size = 219526, upload-time = "2026-10-09T21:27:36.76Z" },
+]
+
+[[package]]
 name = "dagster-cloud-cli"
 version = "1.13.26"
 source = { registry = "https://pypi.org/simple" }
@@ -1370,6 +1388,15 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/d6/cb/448649d7f25d228bf0be3a04590ab7afa77f15e056f8fa976ed05ec9a78f/pathlib_abc-0.5.2.tar.gz", hash = "sha256:fcd56f147234645e2c59c7ae22808b34c364bb231f685ddd9f96885aed78a94c", size = 33342, upload-time = "2025-10-10T18:37:20.524Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/b1/29/c028a0731e202035f0e2e0bfbf1a3e46ad6c628cbb17f6f1cc9eea5d9ff1/pathlib_abc-0.5.2-py3-none-any.whl", hash = "sha256:4c9d94cf1b23af417ce7c0417b43333b06a106c01000b286c99de230d95eefbb", size = 19070, upload-time = "2025-10-10T18:37:19.437Z" },
+]
+
+[[package]]
+name = "pex"
+version = "2.59.5"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/91/35/6bfd6677428fa0c3aec43d05760854ec9b0a054f0e456665903b1a08098f/pex-2.59.5.tar.gz", hash = "sha256:3bcad71f7dd2df47f9b4dd0dea5d837fe4d9d2792b79fd34726c00bfd5f05923", size = 5136890, upload-time = "2025-10-09T04:19:06.255Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/96/eb/80e9012146f6dbba4e1b3dae8b45c771b459fc1615e17e80b1f322794d7c/pex-2.59.5-py2.py3-none-any.whl", hash = "sha256:b9dba4f05b6be08da89b0c54f4bc75ed01c32dfde8ee06f87e82b3a6c69ee388", size = 3873314, upload-time = "2025-10-09T04:19:04.123Z" },
 ]
 
 [[package]]
@@ -2513,6 +2540,7 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "dagster" },
+    { name = "dagster-cloud" },
 ]
 
 [package.dev-dependencies]
@@ -2522,7 +2550,10 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "dagster", specifier = "==1.13.26" }]
+requires-dist = [
+    { name = "dagster", specifier = "==1.13.26" },
+    { name = "dagster-cloud", specifier = ">=1.13.26" },
+]
 
 [package.metadata.requires-dev]
 dev = [
