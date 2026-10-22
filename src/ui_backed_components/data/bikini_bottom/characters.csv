@@ -1,0 +1,17 @@
+character_id,name,species,occupation,home_location_id
+1,SpongeBob SquarePants,sea sponge,Fry Cook,3
+2,Patrick Star,starfish,Professional Rock Dweller,5
+3,Squidward Tentacles,octopus,Cashier,4
+4,Eugene Krabs,crab,Restaurant Owner,1
+5,Sheldon Plankton,plankton,Restaurant Owner,2
+6,Sandy Cheeks,squirrel,Scientist,6
+7,Mrs. Puff,pufferfish,Boating Instructor,9
+8,Pearl Krabs,whale,Student,1
+9,Gary the Snail,sea snail,Pet,3
+10,Karen,computer,Computer Wife,2
+11,Larry the Lobster,lobster,Lifeguard,8
+12,Mermaid Man,fish,Retired Superhero,12
+13,Barnacle Boy,fish,Retired Sidekick,12
+14,The Flying Dutchman,ghost,Ghost Pirate,7
+15,Squilliam Fancyson,octopus,Band Leader,10
+16,Bubble Bass,fish,Professional Food Critic,11

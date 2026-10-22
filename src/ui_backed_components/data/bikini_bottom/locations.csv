@@ -1,0 +1,13 @@
+location_id,name,kind,neighborhood
+1,The Krusty Krab,restaurant,Downtown Bikini Bottom
+2,The Chum Bucket,restaurant,Downtown Bikini Bottom
+3,SpongeBob's Pineapple,home,Conch Street
+4,Squidward's Easter Island Head,home,Conch Street
+5,Patrick's Rock,home,Conch Street
+6,Sandy's Treedome,home,Conch Street
+7,Jellyfish Fields,landmark,Jellyfish Fields
+8,Goo Lagoon,landmark,Goo Lagoon
+9,Mrs. Puff's Boating School,school,Downtown Bikini Bottom
+10,Glove World,attraction,Glove World
+11,Weenie Hut Jr's,restaurant,Downtown Bikini Bottom
+12,Shady Shoals Rest Home,home,Shady Shoals

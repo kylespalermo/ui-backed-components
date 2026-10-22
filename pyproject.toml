@@ -7,6 +7,9 @@ dependencies = [
     "dagster-cloud>=1.13.26",
 ]
 
+[project.entry-points."dagster_dg_cli.registry_modules"]
+ui_backed_components = "ui_backed_components.components"
+
 [dependency-groups]
 dev = [
     "dagster-dg-cli",

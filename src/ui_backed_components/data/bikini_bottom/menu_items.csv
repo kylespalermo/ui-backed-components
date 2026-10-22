@@ -1,0 +1,16 @@
+item_id,name,category,price_usd
+1,Krabby Patty,burger,1.25
+2,Double Krabby Patty,burger,2.00
+3,Triple Krabby Patty,burger,3.00
+4,Krabby Meal,combo,3.50
+5,Double Krabby Meal,combo,3.75
+6,Triple Krabby Meal,combo,4.00
+7,Salty Sea Dog,hot dog,1.25
+8,Footlong,hot dog,2.00
+9,Coral Bits (Small),side,1.00
+10,Coral Bits (Large),side,1.50
+11,Kelp Rings,side,1.50
+12,Kelp Shake,drink,2.00
+13,Seafoam Soda (Small),drink,1.00
+14,Seafoam Soda (Large),drink,1.50
+15,Chum Burger (Chum Bucket),burger,0.99
