@@ -158,8 +158,8 @@ What you should see, and what to expect afterward.
    should appear: **Library**, where `BikiniBottomIngestion` should be listed,
    and **Instances**, which starts empty.
 2. On **Instances**, click **Add**. The "Add component instance" dialog
-   lists only editable types, so **Bikini Bottom ingestion** should be the only
-   one there.
+   lists only editable types: **Bikini Bottom ingestion**, plus the two Phase 2
+   types below.
 3. Pick it. You'll get the form described in Step 2, with **Form** and
    **YAML** tabs.
 4. Enter an asset key prefix (try `bikini_bottom`), optionally uncheck some
@@ -168,6 +168,61 @@ What you should see, and what to expect afterward.
    catalog under the group you chose.
 6. Materialize them. Each one's latest materialization should show the row
    count, column schema, and preview table.
+
+## Phase 2: Components that modify existing assets
+
+Two more component types change how the ingested assets behave instead of
+adding new ones. Each one points at assets that already exist. Like the
+ingestion component, they live in `src/ui_backed_components/components/`, are
+marked `editable=True`, and are exported from `components/__init__.py`, so the
+existing entry point registers them. No changes to `pyproject.toml` were
+needed.
+
+### Row count check (`RowCountCheck`)
+
+This adds an asset check that passes when an asset's latest materialization
+has at least a minimum number of rows. It reads the row count the asset
+already recorded, so it never touches the data.
+
+| Form field                  | Required? | Default | What it does                                                              |
+| --------------------------- | --------- | ------- | ------------------------------------------------------------------------- |
+| **Asset to check**          | Yes       | —       | Slash-separated key, e.g. `bikini_bottom/krusty_krab_orders`. Also the component's ID. |
+| **Minimum rows**            | No        | 1       | Fails below this                                                          |
+| **Severity when it fails**  | No        | WARN    | Dropdown: WARN or ERROR                                                   |
+| **Block downstream assets** | No        | Off     | Under **Advanced**. With ERROR severity, stops downstream assets in the same run. |
+
+The check appears on the asset's **Checks** tab as `min_row_count`.
+
+### Refresh schedule (`AssetSchedule`)
+
+This materializes a selection of assets on a cron schedule. Any checks on
+those assets run in the same run.
+
+| Form field              | Required? | Default         | What it does                                                    |
+| ----------------------- | --------- | --------------- | --------------------------------------------------------------- |
+| **Schedule name**       | Yes       | —               | Letters, numbers, underscores. Also the component's ID.          |
+| **Assets to refresh**   | Yes       | —               | Asset selection, e.g. `group:bikini_bottom` or `key:"bikini_bottom/characters"` |
+| **Schedule**            | No        | Hourly          | Cron widget                                                     |
+| **Turn on immediately** | No        | Off             | If off, turn it on from the schedule's page                     |
+| **Timezone**            | No        | UTC             | Under **Advanced**                                              |
+
+It creates a schedule with the name you give and a job named
+`<name>_job`.
+
+### Suggested test run
+
+1. **Row count check:** `bikini_bottom/krusty_krab_orders`, minimum 200. It
+   has 240 rows, so it should **pass**.
+2. **Row count check:** `bikini_bottom/characters`, minimum 100. It has 16
+   rows, so it should **fail with a warning**.
+3. **Refresh schedule:** name `bikini_bottom_hourly`, assets
+   `group:bikini_bottom`, any cron.
+4. Open the schedule and launch a run from it (or wait for a tick if you
+   turned it on). All five assets should materialize, and both checks should
+   run in the same run with the results above.
+
+If you turn the schedule on, turn it off again when you're done, or it will
+keep launching runs every hour.
 
 ## Rough edges worth watching (dogfooding notes)
 
